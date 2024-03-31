@@ -44,12 +44,12 @@ const Nav = () => {
                             SIGNOUT
                         </button>
                         <Link href="/profile">
-                            <Image
-                                src="/logo.png"
+                            <img
+                                src={session?.user.image ? session?.user.image : "https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"}
                                 height="35"
                                 width="35"
                                 alt="profile"
-                                className=""
+                                className="rounded-full border border-black"
                             />
                         </Link>
                     </>
@@ -74,12 +74,12 @@ const Nav = () => {
                 <div className="sm:hidden flex relative">
                     {session?.user ? (
                     <div className="flex">
-                        <Image
-                            src="/logo.png"
+                        <img
+                            src={session?.user.image ? session?.user.image : "https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"}
                             height={35}
                             width={35}
                             alt="profile"
-                            className="rounded-full hover:cursor-pointer"
+                            className="rounded-full hover:cursor-pointer border border-black"
                             onClick={() => settoggledrop(!toggledrop)}
                         />
                         {toggledrop && (
@@ -112,7 +112,7 @@ const Nav = () => {
                     ):(<>
                         <div className="flex">
                         <Image
-                            src="/logo.png"
+                            src={session?.user.image ? session?.user.image : "https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"}
                             height={35}
                             width={35}
                             alt="profile"

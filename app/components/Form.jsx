@@ -75,7 +75,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           }
           <textarea
             value={post.prompt}
-            onChange={(e) => setPrompt(e.target.value)}
+            onChange={(e) => setPost({ ...post, prompt: e.target.value })}
             placeholder='Write your post here'
             required
             className='form_textarea'

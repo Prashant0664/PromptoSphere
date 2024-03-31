@@ -38,10 +38,19 @@ const handler = NextAuth({
 
                 const userExisis = await User.findOne({ email: profile.email });
                 if (account.provider === "google") {
+                    // console.log(profile,"profile");
+                    // console.log("profile");
+                    // console.log("profile");
+                    // console.log("profile");
+                    // console.log("profile");
+                    // console.log("profile");
+                    // console.log("profile");
+                    // console.log("profile");
+                    // console.log("profile");
                     if (!userExisis) {
                         await new User({
                             email: profile.email,
-                            username: profile.login,
+                            username: profile.given_name ? profile.given_name:profile.name,
                             image: profile.picture
                         }).save();
                     }
@@ -90,7 +99,7 @@ const handler = NextAuth({
                 }
             }
             catch (error) {
-                // //console.log(error, "error in route main google signin")
+                console.log(error, "error in route main google signin")
                 return false;
             }
         }
