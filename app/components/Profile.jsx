@@ -1,13 +1,18 @@
 
 "use client"
 import PromptCard from "./PromptCard";
-
-const Profile = ({ name, data, handleEdit, handleDelete, handledesc, fshow, setfshow }) => {
+import { useSession } from "next-auth/react";
+const Profile = ({ type,name, data, handleEdit, handleDelete, handledesc, fshow, setfshow }) => {
     // function to copy to clipboard
+  const { data: session } = useSession();
+    // console.log(data[0],"ddddddddd");
+    // console.log(session,"ooooooooo");
     const handleTagClick = (text) => {
+        // data[0]?.creator._id==session?.user.id
         navigator.clipboard.writeText(text);
         alert("Copied to clipboard");
     };
+    // console.log(data, "datatatatatatat")
     return (
         <section className='w-[98%] m-[1%]'>
             <div className="flex lg:w-[70%] m-auto items-center">
@@ -33,7 +38,7 @@ const Profile = ({ name, data, handleEdit, handleDelete, handledesc, fshow, setf
                         }
 
                     </div>
-                    {!fshow && <form onSubmit={(e) => {
+                    {!fshow && data[0]?.creator._id==session?.user.id  &&  <form onSubmit={(e) => {
                         e.preventDefault();
                         handledesc(e.target[0].value);
                     }}
@@ -43,8 +48,11 @@ const Profile = ({ name, data, handleEdit, handleDelete, handledesc, fshow, setf
                         <button type="submit" className="form_button text-center w-full bg-green-300">Save</button>
                     </form>}
                     {fshow && <div className=" text-sm sm:text-lg overflow-visible ">
-                        {data[0]?.creator?.desc ? data[0]?.creator?.desc : "Hey there! I am using Prompt-Creator developed by Prashant0664(Github)!!"}
+                    {data[0]?.creator?.desc ? data[0]?.creator?.desc : "Hey there! I am using Prompt-Creator developed by Prashant0664(Github)!!"}
                     </div>}
+                    {data[0]?.creator._id!=session?.user.id && <>
+                        {data[0]?.creator?.desc ? data[0]?.creator?.desc : "Hey there! I am using Prompt-Creator developed by Prashant0664(Github)!!"}
+                    </>}
                 </div>
 
             </div>
@@ -57,7 +65,7 @@ const Profile = ({ name, data, handleEdit, handleDelete, handledesc, fshow, setf
 
                 {data.map((post) => (
                     <PromptCard
-                        type="profile"
+                        type={type}
                         key={post._id}
                         post={post}
                         handleEdit={() => handleEdit && handleEdit(post)}

@@ -15,7 +15,6 @@ const MyProfile = () => {
     const fetchPosts = async () => {
       const response = await fetch(`/api/users/${session?.user.id}/posts`);
       const data = await response.json();
-      //console.log("_____",data);
       setMyPosts(data);
     };
     if (session?.user.id) fetchPosts();
@@ -70,6 +69,7 @@ const MyProfile = () => {
   return (
     <Profile
       name='My'
+      type="profile" 
     //   desc={data?.creator.desc?"data?.creator.desc":"Hii, I am using prompt creator developed by PRASHANT0664(GITHUB)"}
       data={myPosts}
       handleEdit={handleEdit}
