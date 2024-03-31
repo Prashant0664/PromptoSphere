@@ -5,12 +5,10 @@ const nextConfig = {
           "mongodb-client-encryption": false ,
           "aws4": false
         }
-
     return config;
     },
     experimental: {
         missingSuspenseWithCSRBailout: false,
       },
 };
-
 export default nextConfig;
