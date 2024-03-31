@@ -58,7 +58,7 @@ const Profile = ({ type,name, data, handleEdit, handleDelete, handledesc, fshow,
             </div>
 
             <p className='desc text-left mt-6 text-xl font-bold '>
-                Your Prompts:
+                Prompts:
             </p>
 
             <span className='mt-16 span grid grid-cols-1 sm:grid-cols-2 p-4 gap-3 lg:grid-cols-3 span'>
