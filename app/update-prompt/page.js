@@ -9,6 +9,9 @@ const UpdatePrompt = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const promptId = searchParams.get("id");
+  // console.log(promptId)
+  // const id = router.query?.id
+  console.log(router.query);
   const [post, setPost] = useState({ prompt: "", tag: "", });
   const [submitting, setIsSubmitting] = useState(false);
   useEffect(() => {

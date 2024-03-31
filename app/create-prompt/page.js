@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -46,11 +46,14 @@ const CreatePrompt = () => {
     }
   return (
     <>
+    <Suspense>
+
         <Form type='Create'
         post={post}
         setPost={setPost}
         submitting={submitting}
         handleSubmit={CreatePrompt} />
+    </Suspense>
     </>
   )
 }

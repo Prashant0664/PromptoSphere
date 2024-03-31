@@ -10,7 +10,6 @@ export const metadata = {
   keywords:"gpt, prompt, chat, ai, openai, promptosphere, prompto, promptos"
 };
 
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
